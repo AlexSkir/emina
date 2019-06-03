@@ -1,0 +1,42 @@
+let count = 0;
+let anim;
+function animate() {
+  if (count === undefined) {
+    count = 0;
+  }
+  const time = 1000 / window.state.fps;
+  const ticks = time * $('.preview').children().length;
+  $('.preview')
+    .children()
+    .hide();
+  if ($('.preview').children()[count]) {
+    $('.preview').children()[count].style.display = 'block';
+  }
+  count += 1;
+  if (count === $('.preview').children().length) {
+    count = 0;
+  }
+  clearTimeout(anim);
+  anim = setTimeout(animate, ticks);
+}
+
+function makeImage(n) {
+  const canvasImage = new Image();
+  $(canvasImage)
+    .attr('id', `canvasImage${n}`)
+    .css({ width: '100%' })
+    .attr('src', $(`#canvas${n}`)[0].toDataURL('image/png'));
+  if ($(`#canvasImage${n}`).length) {
+    $(canvasImage)
+      .insertBefore(`#canvasImage${n}`)
+      .next()
+      .remove();
+  } else {
+    $(canvasImage).appendTo('.preview');
+  }
+  if ($('.preview').children().length > 1) {
+    animate();
+  }
+}
+
+export { makeImage, animate };
