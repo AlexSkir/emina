@@ -5,17 +5,21 @@ let endY;
 let mouseDownX;
 let mouseDownY;
 
+// drawing on mouse move
 function end(e) {
   const ctx = $(`#canvas${window.state.currentCanvas}`)
     .get(0)
     .getContext('2d');
   endX = e.offsetX;
   endY = e.offsetY;
-  ctx.fillStyle = $('#currentColor').css('background-color');
+  ctx.fillStyle = $('#currentColor').css('background-color'); // color depends on chosen color
   ctx.strokeStyle = $('#currentColor').css('background-color');
+
+  // calc pen size according to chosen canvas width
   const canvasSize = Math.ceil(
     $(`#canvas${window.state.currentCanvas}`).width() / window.state.customWidth
   );
+  // calc position and size of canvas rectangles according to pen size
   const mouseMoveX = Math.floor(e.offsetX / canvasSize) * canvasSize;
   const mouseMoveY = Math.floor(e.offsetY / canvasSize) * canvasSize;
   if (mouseDownX > endX || mouseDownY > endY) {
@@ -24,6 +28,8 @@ function end(e) {
     ctx.fillRect(mouseMoveX, mouseMoveY, canvasSize, canvasSize);
   }
 }
+
+// drawing on mouse click
 function start(e) {
   const ctx = $(`#canvas${window.state.currentCanvas}`)
     .get(0)
@@ -39,20 +45,22 @@ function start(e) {
   $(`#canvas${window.state.currentCanvas}`).mousemove(end);
 }
 
+// show canvas according to active frame, hide other canvas
 function openCanvas() {
   const num = $(this)
     .find('.number')
-    .text();
+    .text(); // calc target frame ID
   window.state.currentCanvas = +num;
-  $('.canvas').addClass('hidden');
-  $(`#canvas${num}`).removeClass('hidden');
+  $('.canvas').addClass('hidden'); // hide all canvas
+  $(`#canvas${num}`).removeClass('hidden'); // show current canvas
   if ($('.activeFrame')) {
     $('.activeFrame').removeClass('activeFrame');
   }
-  $(this).toggleClass('activeFrame');
-  makeImage(+num);
+  $(this).toggleClass('activeFrame'); // make current frame active
+  makeImage(+num); // automatically make image of current canvas for animation
 }
 
+// create new canvas if new frame was created
 function newCanvas(n) {
   const canvasWidth =
     window.innerWidth - 450 < window.innerHeight - 155
@@ -67,6 +75,7 @@ function newCanvas(n) {
   canvas.appendTo('.canvas-area');
 }
 
+// copy target frame's canvas with content if the frame was cloned
 function copyCanvas(n) {
   const cloneWrapper = $(`#canvas${n}`)
     .clone()

@@ -1,3 +1,4 @@
+// change tool-button style, tool does not work yet
 $('#paint-bucket').click(() => {
   if (window.state.currentTool !== 'paintBucketTool') {
     $('#paint-bucket').addClass('hovered');

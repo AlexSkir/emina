@@ -1,3 +1,4 @@
+// change button-tool style if clicked
 $('#pen').click(() => {
   if (window.state.currentTool !== 'penTool') {
     window.state.currentTool = 'penTool';

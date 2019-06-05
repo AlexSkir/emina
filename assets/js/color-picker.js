@@ -1,3 +1,4 @@
+// chose color from pop out panel of colors and bind it to current color box
 $('#customed').on('change', () => {
   const customedColor = $('#customed').val();
   window.state.prevColor = window.state.currentColor;
@@ -6,6 +7,7 @@ $('#customed').on('change', () => {
   $('#currentColor').css({ 'background-color': customedColor });
 });
 
+// change style of tool button
 $('#color-picker').click(() => {
   if (window.state.currentTool !== 'colorPickerTool') {
     $('#color-picker').addClass('hovered');
