@@ -283,11 +283,19 @@
   display: inline-block;
   width: 30px;
 }
+.new-width-block {
+  margin-bottom: 0;
+}
 .resize-input {
   width: 50px;
   margin-left: 10px;
   margin-bottom: 10px;
   border: 1px solid black;
+}
+.error-message {
+  margin: 0;
+  height: 25px;
+  color: rgb(206, 35, 35);
 }
 .resize-button {
   width: 100px;

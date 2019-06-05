@@ -92,12 +92,13 @@
       </div>
       <div class="resize-canvas">
         <span class="resize bold">resize</span>
-        <p>
+        <p class="new-width-block">
           <span>1 - </span>
           <span id="new-width" class="canvas-width"></span>
           <span>px</span>
-          <input type="number" class="resize-input" id="resize-input">
+          <input type="tel" class="resize-input" id="resize-input" min="1" size="3" maxlength="3">
         </p>
+        <p id="error-message" class="error-message"></p>
         <button id="resize-button" class="resize-button">Change canvas size</button>
       </div>
     </div>

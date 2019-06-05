@@ -17,4 +17,6 @@ $(window).bind('resize', () => {
   }
 
   $('#new-width').text($('#canvas1').width()); // change resize options
+
+  $('#resize-input').attr('max', $('#canvas1').width());
 });

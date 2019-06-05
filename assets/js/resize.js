@@ -32,4 +32,5 @@ $(window).bind('resize', () => {
       .putImageData(imageData, 0, 0);
   }
   $('#new-width').text($('#canvas1').width()); // change resize options
+  $('#resize-input').attr('max', $('#canvas1').width());
 });

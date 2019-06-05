@@ -90,6 +90,7 @@ $(document).ready(() => {
   $('#current-width').text(window.state.customWidth);
   $('#current-height').text(window.state.customWidth);
   $('#new-width').text($('#canvas1').width());
+  $('#resize-input').attr('max', $('#canvas1').width());
 });
 // range-input for fps tuning
 $('#fps-bar').on('change', () => {
@@ -99,9 +100,18 @@ $('#fps-bar').on('change', () => {
 // change canvas size
 $('#resize-button').click(() => {
   if ($('#resize-input').val()) {
-    window.state.customWidth = $('#resize-input').val();
-    $('#current-width').text(window.state.customWidth);
-    $('#current-height').text(window.state.customWidth);
+    if ($('#resize-input').val() > 1 && $('#resize-input').val() < $('#resize-input').attr('max')) {
+      window.state.customWidth = $('#resize-input').val();
+      $('#current-width').text(window.state.customWidth);
+      $('#current-height').text(window.state.customWidth);
+      $('#resize-input').val('');
+      $('#error-message').text('');
+    } else {
+      $('#error-message').text(
+        `Size can be from ${$('#resize-input').attr('min')} to ${$('#resize-input').attr('max')} px`
+      );
+      $('#resize-input').val('');
+    }
   }
 });
 // show/hide animation preview buttons
