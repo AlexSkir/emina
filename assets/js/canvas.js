@@ -13,7 +13,9 @@ function end(e) {
   endY = e.offsetY;
   ctx.fillStyle = $('#currentColor').css('background-color');
   ctx.strokeStyle = $('#currentColor').css('background-color');
-  const canvasSize = Math.ceil($(`#canvas${window.state.currentCanvas}`).width() / 33);
+  const canvasSize = Math.ceil(
+    $(`#canvas${window.state.currentCanvas}`).width() / window.state.customWidth
+  );
   const mouseMoveX = Math.floor(e.offsetX / canvasSize) * canvasSize;
   const mouseMoveY = Math.floor(e.offsetY / canvasSize) * canvasSize;
   if (mouseDownX > endX || mouseDownY > endY) {
@@ -26,7 +28,9 @@ function start(e) {
   const ctx = $(`#canvas${window.state.currentCanvas}`)
     .get(0)
     .getContext('2d');
-  const canvasSize = Math.ceil($(`#canvas${window.state.currentCanvas}`).width() / 33);
+  const canvasSize = Math.ceil(
+    $(`#canvas${window.state.currentCanvas}`).width() / window.state.customWidth
+  );
   ctx.fillStyle = $('#currentColor').css('background-color');
   ctx.strokeStyle = $('#currentColor').css('background-color');
   mouseDownX = Math.floor(e.offsetX / canvasSize) * canvasSize;

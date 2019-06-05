@@ -32,14 +32,15 @@
   width: 180px;
   height: 30px;
   top: 70px;
-  left: -60px;   
+  left: -60px;
+  z-index: 10;
 }
 .menu-item:hover {
   background: rgb(109, 245, 177);
   cursor: pointer;
 }
 .menu-item:active {
-  background: rgb(41, 212, 127);    
+  background: rgb(41, 212, 127);
   cursor: pointer;
 }
 
@@ -55,6 +56,9 @@
 }
 .menu-list {
   margin-left: 20px;
+}
+.menu-list:hover {
+  cursor: pointer;
 }
 .task-name {
   position: absolute;
@@ -159,6 +163,9 @@
   margin-left: 5px;
   padding: 0;
 }
+.bold {
+  font-weight: bold;
+}
 
 .frame-box {
 	grid-area: 1 / 2 / span 1 / span 1;
@@ -214,22 +221,64 @@
 .addNewFrame {
 	width: 90px;
 }
+.preview-area {
+  grid-area: 1 / 4 / span 1 / span 1;
+  display: flex;
+  justify-content: center;
+}
 .preview {
-	grid-area: 1 / 4 / span 1 / span 1;
 	width: 180px;
 	height: 180px;
-	justify-self: center;
 	border: 1px solid black;
 }
-.fpsBar {
-	display: flex;
-	grid-area: 1 / 4 / span 1 / span 1;
+.preview-open {
+  position: fixed;
+  right: 30px;
+  top: 95px;
+}
+.fa-external-link-alt:hover {
+  color: rgb(109, 245, 177);
+  cursor: pointer;
+}
+.optionsArea {
+	display: grid;
+  grid-area: 1 / 4 / span 1 / span 1;
+  grid-template-rows: 50px repeat(2, 1fr);
 	margin-top: 200px;
 	justify-content: center;
 	align-items: center;
 }
+.fps-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .display-fps {
 	padding-right: 10px;
+}
+
+.default-size, .resize {  
+  display: block;
+  width: auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+.default-width, .default-height {    
+  padding: 0 10px;
+  margin: 0 5px;
+  border: 1px solid black;
+}
+.canvas-width {
+  display: inline-block;
+  width: 40px;
+}
+.resize-input {
+  width: 50px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+.resize-button {
+  width: 100px;
 }
 
 .active {

@@ -26,14 +26,7 @@
       <span class="task-name">CodeJam - Animation Player</span>
     </div>
   </header>
-
   <div class="container">
-    <!-- 
-paint-bucket p
-color-picker c
-pen m 
-eraser t 
--->
     <div class="palette">
       <div class="palette-block">
         <button id="paint-bucket" class="palette-button"><i class="fas fa-fill-drip"></i></button>
@@ -81,12 +74,34 @@ eraser t
       <button class="addNewFrame">Add new frame</button>
     </div>
 
-    <div class="preview"></div>
-
-    <div class="fpsBar">
-      <span id="display-fps" class="display-fps">3 FPS</span>
-      <input type="range" min="1" max="24" step="1" value="3" id="fps-bar">
+    <div id="preview-area" class="preview-area">
+      <div class="preview-open hidden" id="preview-open"><i class="fas fa-external-link-alt"></i></div>
+      <div class="preview"></div>
     </div>
+
+    <div class="optionsArea">
+      <div class="fps-options">
+        <span id="display-fps" class="display-fps">3 FPS</span>
+        <input type="range" min="1" max="24" step="1" value="3" id="fps-bar">
+      </div>
+      <div class="current-size">
+        <span class="default-size bold">current size</span>
+        <p>Width <span class="default-width bold" id="current-width">33</span> px</p>
+        <p>Height<span class="default-width bold" id="current-height">33</span> px</p>
+      </div>
+      <div class="resize-canvas">
+        <span class="resize bold">resize</span>
+        <p>
+          <span>1 - </span>
+          <span id="new-width" class="canvas-width"></span>
+          <span>px</span>
+          <input type="number" class="resize-input" id="resize-input">
+        </p>
+        <button id="resize-button" class="resize-button">Change canvas size</button>
+      </div>
+    </div>
+
+
   </div>
   <script src="dist/bundle.js"></script>
 </body>

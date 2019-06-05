@@ -5,7 +5,7 @@ import './resize';
 import { start, openCanvas } from './canvas';
 import './pen';
 import { hoverIn, hoverOut, addNewFrame, removeFrame, copyFrame } from './frames';
-import { makeImage } from './preview';
+import { makeImage, fullSizePreview } from './preview';
 
 const currentColor = $('#currentColor').css('background-color');
 const prevColor = $('#prevColor').css('background-color');
@@ -15,7 +15,8 @@ window.state = {
   currentColor,
   prevColor,
   currentCanvas: '',
-  fps: 3
+  fps: 3,
+  customWidth: 33
 };
 
 function changeBG() {
@@ -70,8 +71,31 @@ $(document).ready(() => {
   $('#frame1')
     .click(openCanvas)
     .click();
+  $('#current-width').text(window.state.customWidth);
+  $('#current-height').text(window.state.customWidth);
+  $('#new-width').text($('#canvas1').width());
 });
 $('#fps-bar').on('change', () => {
   window.state.fps = $('#fps-bar').val();
   $('#display-fps').text(`${window.state.fps} FPS`);
 });
+$('#resize-button').click(() => {
+  if ($('#resize-input').val()) {
+    window.state.customWidth = $('#resize-input').val();
+    $('#current-width').text(window.state.customWidth);
+    $('#current-height').text(window.state.customWidth);
+  }
+});
+$('#preview-area').hover(
+  () => {
+    if ($('#preview-open').hasClass('hidden')) {
+      $('#preview-open').removeClass('hidden');
+    }
+  },
+  () => {
+    if (!$('#preview-open').hasClass('hidden')) {
+      $('#preview-open').addClass('hidden');
+    }
+  }
+);
+$('#preview-open').click(fullSizePreview);

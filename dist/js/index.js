@@ -23,7 +23,8 @@ window.state = {
   currentColor,
   prevColor,
   currentCanvas: '',
-  fps: 3
+  fps: 3,
+  customWidth: 33
 };
 
 function changeBG() {
@@ -74,8 +75,28 @@ $('.removeFrame').click(_frames.removeFrame);
 $('.copyFrame').click(_frames.copyFrame);
 $(document).ready(() => {
   $('#frame1').click(_canvas.openCanvas).click();
+  $('#current-width').text(window.state.customWidth);
+  $('#current-height').text(window.state.customWidth);
+  $('#new-width').text($('#canvas1').width());
 });
 $('#fps-bar').on('change', () => {
   window.state.fps = $('#fps-bar').val();
   $('#display-fps').text("".concat(window.state.fps, " FPS"));
 });
+$('#resize-button').click(() => {
+  if ($('#resize-input').val()) {
+    window.state.customWidth = $('#resize-input').val();
+    $('#current-width').text(window.state.customWidth);
+    $('#current-height').text(window.state.customWidth);
+  }
+});
+$('#preview-area').hover(() => {
+  if ($('#preview-open').hasClass('hidden')) {
+    $('#preview-open').removeClass('hidden');
+  }
+}, () => {
+  if (!$('#preview-open').hasClass('hidden')) {
+    $('#preview-open').addClass('hidden');
+  }
+});
+$('#preview-open').click(_preview.fullSizePreview);
