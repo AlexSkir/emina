@@ -14,8 +14,6 @@ function animate() {
 
   const time = 1000 / window.state.fps; // calc animation speed
 
-  const ticks = time * $('.preview').children().length; // calc animation duration
-
   $('.preview').children().css({
     display: 'none'
   }); // hide all canvas-images
@@ -30,7 +28,7 @@ function animate() {
     count = 0; // restart counting if all images were shown
   }
 
-  anim = setTimeout(animate, ticks); // repeat animation
+  anim = setTimeout(animate, time); // repeat animation
 } // make image from canvas drawing
 
 
@@ -72,7 +70,6 @@ function fullSizePreview() {
 
   function newAnimate() {
     const time = 1000 / window.state.fps;
-    const ticks = time * newPreview.children().length;
     newPreview.children().css({
       display: 'none'
     });
@@ -87,7 +84,7 @@ function fullSizePreview() {
       newCount = 0;
     }
 
-    const newAnim = setTimeout(newAnimate, ticks);
+    const newAnim = setTimeout(newAnimate, time);
 
     if (newWindow.closed) {
       clearTimeout(newAnim);

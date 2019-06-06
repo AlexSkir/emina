@@ -100,7 +100,9 @@ $('#fps-bar').on('change', () => {
 // change canvas size
 $('#resize-button').click(() => {
   if ($('#resize-input').val()) {
-    if ($('#resize-input').val() > 1 && $('#resize-input').val() < $('#resize-input').attr('max')) {
+    const inputVal = +$('#resize-input').val();
+    const maxSize = +$('#resize-input').attr('max');
+    if (inputVal > 0 && inputVal < maxSize) {
       window.state.customWidth = $('#resize-input').val();
       $('#current-width').text(window.state.customWidth);
       $('#current-height').text(window.state.customWidth);
