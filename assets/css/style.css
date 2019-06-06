@@ -242,7 +242,7 @@
 }
 .preview-open {
   position: fixed;
-  right: 30px;
+  right: 60px;
   top: 95px;
 }
 .fa-external-link-alt:hover {
