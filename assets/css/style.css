@@ -234,8 +234,6 @@
 }
 .preview-area {
   grid-area: 1 / 4 / span 1 / span 1;
-  display: flex;
-  justify-content: center;
 }
 .preview {
 	width: 180px;
@@ -261,7 +259,6 @@
 }
 .fps-options {
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 220px;
 }
